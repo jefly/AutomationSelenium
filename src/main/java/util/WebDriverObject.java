@@ -20,8 +20,6 @@ public final class WebDriverObject {
 					WebDriverManager.chromedriver().setup();
 					ChromeOptions options = new ChromeOptions();
 					options.addArguments("--disable-notifications");
-//					options.addArguments("--headless");
-					options.addArguments("--window-size=1325x744");
 					driver = new ChromeDriver(options);
 				}
 			}

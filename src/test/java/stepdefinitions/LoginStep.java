@@ -14,7 +14,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.LoginPage;
-import util.Helper;
+import util.HelperWait;
 import util.WebDriverObject;
 
 public class LoginStep {
@@ -69,7 +69,7 @@ public class LoginStep {
 	public void verifyHomePage() {
 		
 		HomePage home = new HomePage(driver);
-		Helper.implicitWait(driver, 40);
+		HelperWait.implicitWait(driver, 40);
 		
 		assertTrue(home.isHomePageDisplayed());
 	}

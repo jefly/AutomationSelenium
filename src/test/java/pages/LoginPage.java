@@ -1,19 +1,18 @@
 package pages;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import util.HelperSeleniumAction;
+import util.HelperWait;
 
 public class LoginPage extends BaseClass<LoginPage> {
 
 	private final By EMAIL = By.id("username");
 	private final By PASSWORD = By.id("password");
-	private final By LOGIN = By.linkText("Log In");
 	private final By SIGNIN = By.id("loginButton");
+	
+	private final By LOGIN = By.linkText("Log In");
 	
 	public LoginPage(WebDriver driver) {
 		super(driver);
@@ -30,24 +29,24 @@ public class LoginPage extends BaseClass<LoginPage> {
 			enterCredentials(email, password);
 		}
 
-		logger.info("Credentials are entered");
+		logger.debug("Credentials are entered");
 	}
 	
 	public void clickContinue() {
-		driver.findElement(SIGNIN).click();
+		HelperSeleniumAction.click(driver, SIGNIN);
 	}
 	
 	private void enterEmail(String email) {
-		driver.findElement(EMAIL).sendKeys(email);
+		HelperSeleniumAction.typeOnText(driver, EMAIL, email);
 	}
 	
 	private void enterPassword(String password) {
-		driver.findElement(PASSWORD).sendKeys(password);
+		HelperSeleniumAction.typeOnText(driver, PASSWORD, password);
 	}
 	
 	public void clickLoginLink() {
-		driver.findElement(LOGIN).click();
-		logger.info("Login button is clicked");
+		HelperSeleniumAction.click(driver, LOGIN);
+//		logger.info("Login button is clicked");
 	}
 	
 	public boolean verifyLogInLink() {
@@ -55,18 +54,20 @@ public class LoginPage extends BaseClass<LoginPage> {
 	}
 	
 	public boolean verifyLoginUnsuccessful() {
-		logger.info("Verifying the user is on the login page");
+//		logger.info("Verifying the user is on the login page");
 		return driver.findElements(SIGNIN).size() == 0;
 	}
 	
 	private boolean waitTillPasswordIsVisible() {
 		
 		try {
-			WebElement element = driver.findElement(PASSWORD);
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-			wait.until(ExpectedConditions.visibilityOf(element));
+//			WebElement element = driver.findElement(PASSWORD);
+			HelperWait.explicitWaitForVisibility(driver, PASSWORD, 5);
+//			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//			wait.until(ExpectedConditions.visibilityOf(element));
 			
 		} catch(Exception e) {
+//			logger.error(e.toString());
 			clickContinue();
 			waitTillPasswordIsVisible();
 		}

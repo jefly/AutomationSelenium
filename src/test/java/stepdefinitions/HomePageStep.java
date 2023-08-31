@@ -16,7 +16,7 @@ import io.cucumber.java.en.When;
 
 import pages.HomePage;
 import pages.LoginPage;
-import util.Helper;
+import util.HelperWait;
 import util.WebDriverObject;
 
 public class HomePageStep {
@@ -48,13 +48,13 @@ public class HomePageStep {
 	@When("user clicks on New")
 	public void clickNew() {
 		home.clickNewButton();
-		Helper.implicitWait(driver, 5);
+		HelperWait.implicitWait(driver, 5);
 	}
 	
 	@And("click on Note")
 	public void clickNoteFeature() {
 		home.clickNoteButton();
-		Helper.implicitWait(driver, 5);
+		HelperWait.implicitWait(driver, 5);
 	}
 	
 	@And("writes a todo list")
@@ -70,7 +70,7 @@ public class HomePageStep {
 	
 	@And("click sign out")
 	public void clickSignOut() {
-		Helper.implicitWait(driver, 5);
+		HelperWait.implicitWait(driver, 5);
 		home.clickSignOut();
 		home.clickExitWithoutSynching();
 	}
@@ -78,7 +78,7 @@ public class HomePageStep {
 	@Then("user should be logged out")
 	public void verifyUserIsSignedOut() {
 		boolean signInButton = login.verifyLogInLink();
-		Helper.implicitWait(driver, 20);
+		HelperWait.implicitWait(driver, 20);
 		home.waitToSignOut();
 		assertTrue(signInButton);
 	}
