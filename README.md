@@ -1,4 +1,4 @@
-# AutomationSelenium (Java, Selenium, BDD & Page Object Model)
+# AutomationSelenium (Java, Selenium, Cucumber & Page Object Model)
 
 # Setup Guide
 ## Prerequisites
