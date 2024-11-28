@@ -17,7 +17,7 @@ To verify whether the Maven is set up properly, run `mvn -version` on the termin
 ### Step 4: Compile the source code and install dependencies
 
 Go to the root of the extracted project, open a terminal for that location. <br/>
-Type `mvn clean install` which will download the necessary dependencies for the project.
+Type `mvn clean test` which will download the necessary dependencies for the project.
 
 ### Step 5: Run the project
 
